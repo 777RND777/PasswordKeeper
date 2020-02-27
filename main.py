@@ -1,10 +1,12 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QMessageBox
 import sys
 
 
 class MainWindow(QMainWindow):
     def __init__(self, **kwargs):
         super(MainWindow, self).__init__(**kwargs)
+        self.setWindowTitle("Password Keeper")
+        self.resize(320, 240)
 
 
 def catch_exceptions(t, val, tb):
