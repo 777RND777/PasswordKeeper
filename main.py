@@ -8,6 +8,11 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Password Keeper")
         self.resize(320, 240)
 
+        self.passwordButton = QPushButton(self)
+        self.passwordButton.setText("Submit")
+        self.passwordButton.resize(150, 40)
+        self.passwordButton.move(85, 190)
+
 
 def catch_exceptions(t, val, tb):
     QMessageBox.critical(None, 'An exception was raised', 'Exception type: {}'.format(t))
