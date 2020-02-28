@@ -30,7 +30,8 @@ class MainWindow(QMainWindow):
         self.websiteText = QPlainTextEdit(self)
         self.websiteText.hide()
         self.addButton = QPushButton(self)
-        self.passwordButton.setText("Add")
+        self.addButton.setText("Add")
+        self.addButton.hide()
 
     def check_password(self):
         if self.enterPasswordText.toPlainText() == "qqq":
@@ -45,6 +46,7 @@ class MainWindow(QMainWindow):
         self.loginText.show()
         self.passwordText.show()
         self.websiteText.show()
+        self.addButton.show()
 
 
 def catch_exceptions(t, val, tb):
