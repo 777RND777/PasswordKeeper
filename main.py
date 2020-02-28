@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QPushButton, QMainWindow, QMessageBox
+from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QMessageBox, QPlainTextEdit, QPushButton
 import sys
 
 
@@ -7,6 +7,16 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__(**kwargs)
         self.setWindowTitle("Password Keeper")
         self.resize(320, 240)
+
+        self.infoText = QLabel(self)
+        self.infoText.setText("Type password:")
+        self.infoText.setTextFormat()
+        self.infoText.resize(180, 40)
+        self.infoText.move(70, 50)
+
+        self.passwordText = QPlainTextEdit(self)
+        self.passwordText.resize(180, 40)
+        self.passwordText.move(70, 120)
 
         self.passwordButton = QPushButton(self)
         self.passwordButton.setText("Submit")
