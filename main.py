@@ -43,10 +43,22 @@ class MainWindow(QMainWindow):
         self.infoText.hide()
         self.enterPasswordText.hide()
         self.passwordButton.hide()
-        self.loginText.show()
-        self.passwordText.show()
+
         self.websiteText.show()
+        self.websiteText.resize(180, 40)
+        self.websiteText.move(70, 20)
+
+        self.loginText.show()
+        self.loginText.resize(180, 40)
+        self.loginText.move(70, 70)
+
+        self.passwordText.show()
+        self.passwordText.resize(180, 40)
+        self.passwordText.move(70, 120)
+
         self.addButton.show()
+        self.addButton.resize(180, 40)
+        self.addButton.move(70, 170)
 
 
 def catch_exceptions(t, val, tb):
