@@ -13,9 +13,9 @@ class MainWindow(QMainWindow):
         self.infoText.resize(180, 40)
         self.infoText.move(70, 50)
 
-        self.passwordText = QPlainTextEdit(self)
-        self.passwordText.resize(180, 40)
-        self.passwordText.move(70, 120)
+        self.enterPasswordText = QPlainTextEdit(self)
+        self.enterPasswordText.resize(180, 40)
+        self.enterPasswordText.move(70, 120)
 
         self.passwordButton = QPushButton(self)
         self.passwordButton.setText("Submit")
@@ -23,11 +23,28 @@ class MainWindow(QMainWindow):
         self.passwordButton.move(85, 190)
         self.passwordButton.clicked.connect(self.check_password)
 
+        self.loginText = QPlainTextEdit(self)
+        self.loginText.hide()
+        self.passwordText = QPlainTextEdit(self)
+        self.passwordText.hide()
+        self.websiteText = QPlainTextEdit(self)
+        self.websiteText.hide()
+        self.addButton = QPushButton(self)
+        self.passwordButton.setText("Add")
+
     def check_password(self):
-        if self.passwordText.toPlainText() == "qqq":
-            self.infoText.setText("Correct!")
+        if self.enterPasswordText.toPlainText() == "qqq":
+            self.change_menu()
         else:
             self.infoText.setText("WRONG!")
+
+    def change_menu(self):
+        self.infoText.hide()
+        self.enterPasswordText.hide()
+        self.passwordButton.hide()
+        self.loginText.show()
+        self.passwordText.show()
+        self.websiteText.show()
 
 
 def catch_exceptions(t, val, tb):
