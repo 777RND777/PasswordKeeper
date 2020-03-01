@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QMessageBox, QPlainTextEdit, QPushButton, QTableView
+from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QMessageBox, QPlainTextEdit, QPushButton, QTableWidget
 import sys
 
 
@@ -38,6 +38,8 @@ class MainWindow(QMainWindow):
         self.passwordInput.hide()
         self.addButton = QPushButton(self)
         self.addButton.hide()
+        self.infoTable = QTableWidget(self)
+        self.infoTable.hide()
 
     def check_password(self):
         if self.enterPasswordInput.toPlainText() == "qqq":
@@ -76,6 +78,13 @@ class MainWindow(QMainWindow):
         self.addButton.setText("Add")
         self.addButton.resize(180, 40)
         self.addButton.move(70, 170)
+
+        self.infoTable.show()
+        self.infoTable.setColumnCount(3)
+        self.infoTable.setRowCount(1)
+        self.infoTable.setHorizontalHeaderLabels(["Website", "Login", "Password"])
+        self.infoTable.resize(320, 270)
+        self.infoTable.move(0, 210)
 
 
 def catch_exceptions(t, val, tb):
