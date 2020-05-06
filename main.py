@@ -9,9 +9,9 @@ class MainWindow(QMainWindow):
         self.resize(320, 240)
 
         self.infoText = QLabel(self)
-        self.infoText.setText("Type password:")
+        self.infoText.setText("Type password")
         self.infoText.resize(180, 40)
-        self.infoText.move(70, 50)
+        self.infoText.move(120, 50)
 
         self.enterPasswordText = QPlainTextEdit(self)
         self.enterPasswordText.resize(180, 40)
@@ -23,14 +23,19 @@ class MainWindow(QMainWindow):
         self.passwordButton.move(85, 190)
         self.passwordButton.clicked.connect(self.check_password)
 
-        self.loginText = QPlainTextEdit(self)
-        self.loginText.hide()
-        self.passwordText = QPlainTextEdit(self)
-        self.passwordText.hide()
+        self.websiteLabel = QLabel(self)
+        self.websiteLabel.hide()
         self.websiteText = QPlainTextEdit(self)
         self.websiteText.hide()
+        self.loginLabel = QLabel(self)
+        self.loginLabel.hide()
+        self.loginText = QPlainTextEdit(self)
+        self.loginText.hide()
+        self.passwordLabel = QLabel(self)
+        self.passwordLabel.hide()
+        self.passwordText = QPlainTextEdit(self)
+        self.passwordText.hide()
         self.addButton = QPushButton(self)
-        self.addButton.setText("Add")
         self.addButton.hide()
 
     def check_password(self):
@@ -44,21 +49,31 @@ class MainWindow(QMainWindow):
         self.enterPasswordText.hide()
         self.passwordButton.hide()
 
+        self.websiteLabel.setText("Website")
+        self.websiteLabel.move(20, 20)
+        self.websiteLabel.show()
+        self.websiteText.resize(180, 25)
+        self.websiteText.move(100, 20)
         self.websiteText.show()
-        self.websiteText.resize(180, 40)
-        self.websiteText.move(70, 20)
 
+        self.loginLabel.setText("Login")
+        self.loginLabel.move(20, 70)
+        self.loginLabel.show()
+        self.loginText.resize(180, 25)
+        self.loginText.move(100, 70)
         self.loginText.show()
-        self.loginText.resize(180, 40)
-        self.loginText.move(70, 70)
 
+        self.passwordLabel.setText("Password")
+        self.passwordLabel.move(20, 120)
+        self.passwordLabel.show()
+        self.passwordText.resize(180, 25)
+        self.passwordText.move(100, 120)
         self.passwordText.show()
-        self.passwordText.resize(180, 40)
-        self.passwordText.move(70, 120)
 
-        self.addButton.show()
+        self.addButton.setText("Add")
         self.addButton.resize(180, 40)
         self.addButton.move(70, 170)
+        self.addButton.show()
 
 
 def catch_exceptions(t, val, tb):
