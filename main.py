@@ -25,13 +25,30 @@ class MainWindow(QWidget):
 
         self.setLayout(self.passwordLayout)
 
-        self.websiteLabel = QLabel()
+        self.websiteLabel = QLabel("Website")
         self.websiteText = QPlainTextEdit()
-        self.loginLabel = QLabel()
+        self.websiteLayout = QHBoxLayout()
+        self.websiteLayout.addWidget(self.websiteLabel)
+        self.websiteLayout.addWidget(self.websiteText)
+
+        self.loginLabel = QLabel("Login")
         self.loginText = QPlainTextEdit()
-        self.passwordLabel = QLabel()
+        self.loginLayout = QHBoxLayout()
+        self.loginLayout.addWidget(self.loginLabel)
+        self.loginLayout.addWidget(self.loginText)
+
+        self.passwordLabel = QLabel("Password")
         self.passwordText = QPlainTextEdit()
-        self.addButton = QPushButton()
+        self.passwordLayout = QHBoxLayout()
+        self.passwordLayout.addWidget(self.passwordLabel)
+        self.passwordLayout.addWidget(self.passwordText)
+
+        self.addButton = QPushButton("Add")
+
+        self.addLayout = QVBoxLayout()
+        self.addLayout.addLayout(self.websiteLayout)
+        self.addLayout.addLayout(self.loginLayout)
+        self.addLayout.addLayout(self.passwordLayout)
 
     def check_password(self):
         if self.enterPasswordText.toPlainText() == "qqq":
@@ -40,21 +57,7 @@ class MainWindow(QWidget):
             self.infoText.setText("WRONG!")
 
     def change_menu(self):
-
-        self.websiteLabel.setText("Website")
-        self.websiteLabel.show()
-        self.websiteText.show()
-
-        self.loginLabel.setText("Login")
-        self.loginLabel.show()
-        self.loginText.show()
-
-        self.passwordLabel.setText("Password")
-        self.passwordLabel.show()
-        self.passwordText.show()
-
-        self.addButton.setText("Add")
-        self.addButton.show()
+        self.setLayout(self.addLayout)
 
 
 def catch_exceptions(t, val, tb):
