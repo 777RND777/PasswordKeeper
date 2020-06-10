@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QMessageBox, QPlainTextEdit, QPushButton, QTableWidget
+from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QMessageBox, QPlainTextEdit, QPushButton
 import sys
 
 
@@ -9,14 +9,13 @@ class MainWindow(QMainWindow):
         self.resize(320, 240)
 
         self.infoText = QLabel(self)
-        self.infoText.setText("Type password:")
+        self.infoText.setText("Type password")
         self.infoText.resize(180, 40)
-        self.infoText.move(70, 50)
+        self.infoText.move(120, 50)
 
-        self.enterPasswordInput = QPlainTextEdit(self)
-        self.enterPasswordInput.setPlaceholderText("Password...")
-        self.enterPasswordInput.resize(180, 40)
-        self.enterPasswordInput.move(70, 120)
+        self.enterPasswordText = QPlainTextEdit(self)
+        self.enterPasswordText.resize(180, 40)
+        self.enterPasswordText.move(70, 120)
 
         self.passwordButton = QPushButton(self)
         self.passwordButton.setText("Submit")
@@ -24,67 +23,57 @@ class MainWindow(QMainWindow):
         self.passwordButton.move(85, 190)
         self.passwordButton.clicked.connect(self.check_password)
 
-        self.websiteText = QLabel(self)
+        self.websiteLabel = QLabel(self)
+        self.websiteLabel.hide()
+        self.websiteText = QPlainTextEdit(self)
         self.websiteText.hide()
-        self.websiteInput = QPlainTextEdit(self)
-        self.websiteInput.hide()
-        self.loginText = QLabel(self)
+        self.loginLabel = QLabel(self)
+        self.loginLabel.hide()
+        self.loginText = QPlainTextEdit(self)
         self.loginText.hide()
-        self.loginInput = QPlainTextEdit(self)
-        self.loginInput.hide()
-        self.passwordText = QLabel(self)
+        self.passwordLabel = QLabel(self)
+        self.passwordLabel.hide()
+        self.passwordText = QPlainTextEdit(self)
         self.passwordText.hide()
-        self.passwordInput = QPlainTextEdit(self)
-        self.passwordInput.hide()
         self.addButton = QPushButton(self)
         self.addButton.hide()
-        self.infoTable = QTableWidget(self)
-        self.infoTable.hide()
 
     def check_password(self):
-        if self.enterPasswordInput.toPlainText() == "qqq":
+        if self.enterPasswordText.toPlainText() == "qqq":
             self.change_menu()
         else:
             self.infoText.setText("WRONG!")
 
     def change_menu(self):
-        self.resize(320, 480)
         self.infoText.hide()
-        self.enterPasswordInput.hide()
+        self.enterPasswordText.hide()
         self.passwordButton.hide()
 
+        self.websiteLabel.setText("Website")
+        self.websiteLabel.move(20, 20)
+        self.websiteLabel.show()
+        self.websiteText.resize(180, 25)
+        self.websiteText.move(100, 20)
         self.websiteText.show()
-        self.websiteText.setText("Website:")
-        self.websiteText.move(20, 20)
-        self.websiteInput.show()
-        self.websiteInput.resize(180, 40)
-        self.websiteInput.move(120, 20)
 
+        self.loginLabel.setText("Login")
+        self.loginLabel.move(20, 70)
+        self.loginLabel.show()
+        self.loginText.resize(180, 25)
+        self.loginText.move(100, 70)
         self.loginText.show()
-        self.loginText.setText("Login:")
-        self.loginText.move(20, 70)
-        self.loginInput.show()
-        self.loginInput.resize(180, 40)
-        self.loginInput.move(120, 70)
 
+        self.passwordLabel.setText("Password")
+        self.passwordLabel.move(20, 120)
+        self.passwordLabel.show()
+        self.passwordText.resize(180, 25)
+        self.passwordText.move(100, 120)
         self.passwordText.show()
-        self.passwordText.setText("Password:")
-        self.passwordText.move(20, 120)
-        self.passwordInput.show()
-        self.passwordInput.resize(180, 40)
-        self.passwordInput.move(120, 120)
 
-        self.addButton.show()
         self.addButton.setText("Add")
         self.addButton.resize(180, 40)
         self.addButton.move(70, 170)
-
-        self.infoTable.show()
-        self.infoTable.setColumnCount(3)
-        self.infoTable.setRowCount(1)
-        self.infoTable.setHorizontalHeaderLabels(["Website", "Login", "Password"])
-        self.infoTable.resize(320, 270)
-        self.infoTable.move(0, 210)
+        self.addButton.show()
 
 
 def catch_exceptions(t, val, tb):
