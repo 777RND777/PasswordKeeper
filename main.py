@@ -1,42 +1,37 @@
-from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QMessageBox, QPlainTextEdit, QPushButton
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (QApplication, QHBoxLayout, QLabel, QMessageBox,
+                             QPlainTextEdit, QPushButton, QVBoxLayout, QWidget)
 import sys
 
 
-class MainWindow(QMainWindow):
+class MainWindow(QWidget):
     def __init__(self, **kwargs):
         super(MainWindow, self).__init__(**kwargs)
         self.setWindowTitle("Password Keeper")
-        self.resize(320, 240)
 
-        self.infoText = QLabel(self)
+        self.infoText = QLabel()
         self.infoText.setText("Type password")
-        self.infoText.resize(180, 40)
-        self.infoText.move(120, 50)
 
-        self.enterPasswordText = QPlainTextEdit(self)
-        self.enterPasswordText.resize(180, 40)
-        self.enterPasswordText.move(70, 120)
+        self.enterPasswordText = QPlainTextEdit()
 
-        self.passwordButton = QPushButton(self)
+        self.passwordButton = QPushButton()
         self.passwordButton.setText("Submit")
-        self.passwordButton.resize(150, 40)
-        self.passwordButton.move(85, 190)
         self.passwordButton.clicked.connect(self.check_password)
 
-        self.websiteLabel = QLabel(self)
-        self.websiteLabel.hide()
-        self.websiteText = QPlainTextEdit(self)
-        self.websiteText.hide()
-        self.loginLabel = QLabel(self)
-        self.loginLabel.hide()
-        self.loginText = QPlainTextEdit(self)
-        self.loginText.hide()
-        self.passwordLabel = QLabel(self)
-        self.passwordLabel.hide()
-        self.passwordText = QPlainTextEdit(self)
-        self.passwordText.hide()
-        self.addButton = QPushButton(self)
-        self.addButton.hide()
+        self.passwordLayout = QVBoxLayout()
+        self.passwordLayout.addWidget(self.infoText, alignment=Qt.AlignCenter)
+        self.passwordLayout.addWidget(self.enterPasswordText, alignment=Qt.AlignBaseline)
+        self.passwordLayout.addWidget(self.passwordButton, alignment=Qt.AlignBaseline)
+
+        self.setLayout(self.passwordLayout)
+
+        self.websiteLabel = QLabel()
+        self.websiteText = QPlainTextEdit()
+        self.loginLabel = QLabel()
+        self.loginText = QPlainTextEdit()
+        self.passwordLabel = QLabel()
+        self.passwordText = QPlainTextEdit()
+        self.addButton = QPushButton()
 
     def check_password(self):
         if self.enterPasswordText.toPlainText() == "qqq":
@@ -45,34 +40,20 @@ class MainWindow(QMainWindow):
             self.infoText.setText("WRONG!")
 
     def change_menu(self):
-        self.infoText.hide()
-        self.enterPasswordText.hide()
-        self.passwordButton.hide()
 
         self.websiteLabel.setText("Website")
-        self.websiteLabel.move(20, 20)
         self.websiteLabel.show()
-        self.websiteText.resize(180, 25)
-        self.websiteText.move(100, 20)
         self.websiteText.show()
 
         self.loginLabel.setText("Login")
-        self.loginLabel.move(20, 70)
         self.loginLabel.show()
-        self.loginText.resize(180, 25)
-        self.loginText.move(100, 70)
         self.loginText.show()
 
         self.passwordLabel.setText("Password")
-        self.passwordLabel.move(20, 120)
         self.passwordLabel.show()
-        self.passwordText.resize(180, 25)
-        self.passwordText.move(100, 120)
         self.passwordText.show()
 
         self.addButton.setText("Add")
-        self.addButton.resize(180, 40)
-        self.addButton.move(70, 170)
         self.addButton.show()
 
 
