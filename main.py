@@ -1,6 +1,6 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (QApplication, QHBoxLayout, QLabel, QMessageBox,
-                             QPlainTextEdit, QPushButton, QVBoxLayout, QWidget)
+from PyQt5.QtWidgets import (QApplication, QHBoxLayout, QLabel, QLineEdit,
+                             QMessageBox, QPushButton, QVBoxLayout, QWidget)
 import sys
 
 
@@ -12,7 +12,7 @@ class MainWindow(QWidget):
         self.infoText = QLabel()
         self.infoText.setText("Type password")
 
-        self.enterPasswordText = QPlainTextEdit()
+        self.enterPasswordText = QLineEdit()
 
         self.passwordButton = QPushButton()
         self.passwordButton.setText("Submit")
@@ -26,19 +26,19 @@ class MainWindow(QWidget):
         self.setLayout(self.passwordLayout)
 
         self.websiteLabel = QLabel("Website")
-        self.websiteText = QPlainTextEdit()
+        self.websiteText = QLineEdit()
         self.websiteLayout = QHBoxLayout()
         self.websiteLayout.addWidget(self.websiteLabel)
         self.websiteLayout.addWidget(self.websiteText)
 
         self.loginLabel = QLabel("Login")
-        self.loginText = QPlainTextEdit()
+        self.loginText = QLineEdit()
         self.loginLayout = QHBoxLayout()
         self.loginLayout.addWidget(self.loginLabel)
         self.loginLayout.addWidget(self.loginText)
 
         self.passwordLabel = QLabel("Password")
-        self.passwordText = QPlainTextEdit()
+        self.passwordText = QLineEdit()
         self.passwordLayout = QHBoxLayout()
         self.passwordLayout.addWidget(self.passwordLabel)
         self.passwordLayout.addWidget(self.passwordText)
@@ -51,7 +51,7 @@ class MainWindow(QWidget):
         self.addLayout.addLayout(self.passwordLayout)
 
     def check_password(self):
-        if self.enterPasswordText.toPlainText() == "qqq":
+        if self.enterPasswordText.text() == "qqq":
             self.change_menu()
         else:
             self.infoText.setText("WRONG!")
