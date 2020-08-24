@@ -30,4 +30,4 @@ class PasswordWidget(QWidget):
             self.switch_window.emit()
         else:
             self.infoText.setText("WRONG!")
-            self.passwordWidget.enterPasswordText.setText("")
+            self.enterPasswordText.setText("")
