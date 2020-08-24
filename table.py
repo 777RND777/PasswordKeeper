@@ -3,8 +3,8 @@ from PyQt5.QtWidgets import QHBoxLayout, QLabel, QLineEdit, QPushButton, QVBoxLa
 
 
 class ProgramWidget(QWidget):
-    def __init__(self, parent=None):
-        super(ProgramWidget, self).__init__(parent)
+    def __init__(self):
+        super(ProgramWidget, self).__init__()
 
         self.websiteLabel = QLabel("Website")
         self.websiteText = QLineEdit()

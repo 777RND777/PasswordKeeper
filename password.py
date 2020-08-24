@@ -5,9 +5,8 @@ from PyQt5.QtWidgets import QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
 class PasswordWidget(QWidget):
     switch_window = pyqtSignal()
 
-    # TODO parent ???
-    def __init__(self, parent=None):
-        super(PasswordWidget, self).__init__(parent)
+    def __init__(self):
+        super(PasswordWidget, self).__init__()
 
         self.infoText = QLabel()
         self.infoText.setText("Type password")
