@@ -11,10 +11,10 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Password Keeper")
 
         self.passwordWidget = password.PasswordWidget()
-        self.passwordWidget.switch_window.connect(self.switch_window)
+        self.passwordWidget.switch_window.connect(self.pass_check)
         self.setCentralWidget(self.passwordWidget)
 
-    def switch_window(self):
+    def pass_check(self):
         self.setCentralWidget(table.ProgramWidget())
 
 

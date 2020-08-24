@@ -11,22 +11,22 @@ class PasswordWidget(QWidget):
         self.infoText = QLabel()
         self.infoText.setText("Type password")
 
-        self.enterPasswordText = QLineEdit()
+        self.enterText = QLineEdit()
 
-        self.passwordButton = QPushButton()
-        self.passwordButton.setText("Submit")
-        self.passwordButton.clicked.connect(self.check_password)
+        self.submitButton = QPushButton()
+        self.submitButton.setText("Submit")
+        self.submitButton.clicked.connect(self.check_password)
 
-        self.passwordLayout = QVBoxLayout()
-        self.passwordLayout.addWidget(self.infoText, alignment=Qt.AlignCenter)
-        self.passwordLayout.addWidget(self.enterPasswordText, alignment=Qt.AlignBaseline)
-        self.passwordLayout.addWidget(self.passwordButton, alignment=Qt.AlignBaseline)
+        self.mainLayout = QVBoxLayout()
+        self.mainLayout.addWidget(self.infoText, alignment=Qt.AlignCenter)
+        self.mainLayout.addWidget(self.enterText, alignment=Qt.AlignBaseline)
+        self.mainLayout.addWidget(self.submitButton, alignment=Qt.AlignBaseline)
 
-        self.setLayout(self.passwordLayout)
+        self.setLayout(self.mainLayout)
 
     def check_password(self):
-        if self.enterPasswordText.text() == "qqq":
+        if self.enterText.text() == "qqq":
             self.switch_window.emit()
         else:
             self.infoText.setText("WRONG!")
-            self.enterPasswordText.setText("")
+            self.enterText.setText("")
