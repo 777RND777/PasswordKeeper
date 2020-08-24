@@ -1,8 +1,10 @@
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import pyqtSignal, Qt
 from PyQt5.QtWidgets import QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
 
 
 class PasswordWidget(QWidget):
+    switch_window = pyqtSignal()
+
     # TODO parent ???
     def __init__(self, parent=None):
         super(PasswordWidget, self).__init__(parent)
@@ -25,6 +27,7 @@ class PasswordWidget(QWidget):
 
     def check_password(self):
         if self.enterPasswordText.text() == "qqq":
-            pass
+            self.switch_window.emit()
         else:
             self.infoText.setText("WRONG!")
+            self.passwordWidget.enterPasswordText.setText("")
