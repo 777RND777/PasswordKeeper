@@ -1,5 +1,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QHBoxLayout, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
+from table import DBTable
 
 
 class ProgramWidget(QWidget):
@@ -26,10 +27,13 @@ class ProgramWidget(QWidget):
 
         self.addButton = QPushButton("Add")
 
+        self.table = DBTable()
+
         self.dbLayout = QVBoxLayout()
         self.dbLayout.addLayout(self.websiteLayout)
         self.dbLayout.addLayout(self.loginLayout)
         self.dbLayout.addLayout(self.passwordLayout)
         self.dbLayout.addWidget(self.addButton, alignment=Qt.AlignCenter)
+        self.dbLayout.addWidget(self.table, alignment=Qt.AlignBaseline)
 
         self.setLayout(self.dbLayout)

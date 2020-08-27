@@ -1,34 +1,25 @@
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QHBoxLayout, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtGui import QStandardItem, QStandardItemModel
+from PyQt5.QtWidgets import QTableView
 
 
-class ProgramWidget(QWidget):
+class DBTable(QTableView):
     def __init__(self):
-        super(ProgramWidget, self).__init__()
+        super(DBTable, self).__init__()
 
-        self.websiteLabel = QLabel("Website")
-        self.websiteText = QLineEdit()
-        self.websiteLayout = QHBoxLayout()
-        self.websiteLayout.addWidget(self.websiteLabel, alignment=Qt.AlignCenter)
-        self.websiteLayout.addWidget(self.websiteText, alignment=Qt.AlignCenter)
+        info = fill_table()
+        self.setModel(info)
 
-        self.loginLabel = QLabel("Login")
-        self.loginText = QLineEdit()
-        self.loginLayout = QHBoxLayout()
-        self.loginLayout.addWidget(self.loginLabel, alignment=Qt.AlignCenter)
-        self.loginLayout.addWidget(self.loginText, alignment=Qt.AlignCenter)
 
-        self.passwordLabel = QLabel("Password")
-        self.passwordText = QLineEdit()
-        self.passwordLayout = QHBoxLayout()
-        self.passwordLayout.addWidget(self.passwordLabel, alignment=Qt.AlignCenter)
-        self.passwordLayout.addWidget(self.passwordText, alignment=Qt.AlignCenter)
+def fill_table():
+    info = QStandardItemModel()
+    for program in get_saved_info():
+        first = QStandardItem(program)
+        second = QStandardItem(program)
+        third = QStandardItem(program)
+        info.appendRow([first, second, third])
+    info.setHorizontalHeaderLabels(["Website", "Login", "Password"])
+    return info
 
-        self.addButton = QPushButton("Add")
 
-        self.dbLayout = QVBoxLayout()
-        self.dbLayout.addLayout(self.websiteLayout)
-        self.dbLayout.addLayout(self.loginLayout)
-        self.dbLayout.addLayout(self.passwordLayout)
-
-        self.setLayout(self.dbLayout)
+def get_saved_info():
+    return ["AAA", "BBB"]
