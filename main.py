@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 import password
 import sys
-import table
+import menu
 
 
 class MainWindow(QMainWindow):
@@ -13,9 +13,10 @@ class MainWindow(QMainWindow):
         self.passwordWidget = password.PasswordWidget()
         self.passwordWidget.switch_window.connect(self.pass_check)
         self.setCentralWidget(self.passwordWidget)
+        self.pass_check()
 
     def pass_check(self):
-        self.setCentralWidget(table.ProgramWidget())
+        self.setCentralWidget(menu.ProgramWidget())
 
 
 def catch_exceptions(t, val, tb):
