@@ -6,7 +6,17 @@ class DBTable(QTableWidget):
         super(DBTable, self).__init__()
 
         self.setColumnCount(3)
+
         self.setHorizontalHeaderLabels(["Website", "Login", "Password"])
+        self.get_saved_info()
+
+    def get_saved_info(self):
+        with open("db") as f:
+            data = f.readlines()
+        for line in data:
+            line = line.split("|")
+            if len(line) == 3:
+                self.add_row(line[0], line[1], line[2][:len(line[2]) - 1])
 
     def add_row(self, website, login, password):
         row_position = self.rowCount()
