@@ -1,25 +1,16 @@
-from PyQt5.QtGui import QStandardItem, QStandardItemModel
-from PyQt5.QtWidgets import QTableView
+from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
 
 
-class DBTable(QTableView):
+class DBTable(QTableWidget):
     def __init__(self):
         super(DBTable, self).__init__()
 
-        info = fill_table()
-        self.setModel(info)
+        self.setColumnCount(3)
+        self.setHorizontalHeaderLabels(["Website", "Login", "Password"])
 
-
-def fill_table():
-    info = QStandardItemModel()
-    for program in get_saved_info():
-        first = QStandardItem(program)
-        second = QStandardItem(program)
-        third = QStandardItem(program)
-        info.appendRow([first, second, third])
-    info.setHorizontalHeaderLabels(["Website", "Login", "Password"])
-    return info
-
-
-def get_saved_info():
-    return ["AAA", "BBB"]
+    def add_row(self, website, login, password):
+        row_position = self.rowCount()
+        self.insertRow(row_position)
+        self.setItem(row_position, 0, QTableWidgetItem(website))
+        self.setItem(row_position, 1, QTableWidgetItem(login))
+        self.setItem(row_position, 2, QTableWidgetItem(password))

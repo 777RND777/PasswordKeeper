@@ -26,6 +26,7 @@ class ProgramWidget(QWidget):
         self.passwordLayout.addWidget(self.passwordText, alignment=Qt.AlignCenter)
 
         self.addButton = QPushButton("Add")
+        self.addButton.clicked.connect(self.add_info)
 
         self.table = DBTable()
 
@@ -37,3 +38,12 @@ class ProgramWidget(QWidget):
         self.dbLayout.addWidget(self.table, alignment=Qt.AlignBaseline)
 
         self.setLayout(self.dbLayout)
+
+    def add_info(self):
+        self.table.add_row(self.websiteText.text(), self.loginText.text(), self.passwordText.text())
+        self.empty_fields()
+
+    def empty_fields(self):
+        self.websiteText.setText("")
+        self.loginText.setText("")
+        self.passwordText.setText("")
