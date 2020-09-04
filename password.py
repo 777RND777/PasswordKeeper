@@ -16,11 +16,12 @@ class PasswordWidget(QWidget):
         self.submitButton = QPushButton()
         self.submitButton.setText("Submit")
         self.submitButton.clicked.connect(self.check_password)
+        self.submitButton.setShortcut("Return")
 
         self.mainLayout = QVBoxLayout()
         self.mainLayout.addWidget(self.infoText, alignment=Qt.AlignCenter)
-        self.mainLayout.addWidget(self.enterText, alignment=Qt.AlignBaseline)
-        self.mainLayout.addWidget(self.submitButton, alignment=Qt.AlignBaseline)
+        self.mainLayout.addWidget(self.enterText, alignment=Qt.AlignCenter)
+        self.mainLayout.addWidget(self.submitButton, alignment=Qt.AlignCenter)
 
         self.setLayout(self.mainLayout)
 

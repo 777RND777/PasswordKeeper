@@ -27,6 +27,7 @@ class ProgramWidget(QWidget):
 
         self.addButton = QPushButton("Add")
         self.addButton.clicked.connect(self.add_info)
+        self.addButton.setShortcut("Return")
 
         self.table = DBTable()
 
