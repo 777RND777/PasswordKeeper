@@ -9,6 +9,7 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__(**kwargs)
 
         self.setWindowTitle("Password Keeper")
+        self.resize(335, 300)
 
         self.passwordWidget = password.PasswordWidget()
         self.passwordWidget.switch_window.connect(self.pass_check)
