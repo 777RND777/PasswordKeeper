@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QHBoxLayout, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QHBoxLayout, QLabel, QLineEdit, QMessageBox, QPushButton, QVBoxLayout, QWidget
 from table import DBTable
 
 
@@ -41,8 +41,15 @@ class ProgramWidget(QWidget):
         self.setLayout(self.dbLayout)
 
     def add_info(self):
-        self.table.add_row(self.websiteText.text(), self.loginText.text(), self.passwordText.text())
-        self.empty_fields()
+        if len(self.websiteText.text()) == 0:
+            QMessageBox.critical(None, "Error", "Website field is empty.")
+        elif len(self.loginText.text()) == 0:
+            QMessageBox.critical(None, "Error", "Login field is empty.")
+        elif len(self.passwordText.text()) == 0:
+            QMessageBox.critical(None, "Error", "Password field is empty.")
+        else:
+            self.table.add_row(self.websiteText.text(), self.loginText.text(), self.passwordText.text())
+            self.empty_fields()
 
     def empty_fields(self):
         self.websiteText.setText("")

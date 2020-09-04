@@ -21,11 +21,11 @@ class MainWindow(QMainWindow):
 
 
 def catch_exceptions(t, val, tb):
-    QMessageBox.critical(None, 'An exception was raised', 'Exception type: {}'.format(t))
+    QMessageBox.critical(None, "An exception was raised", "Exception type: {}".format(t))
     old_hook(t, val, tb)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     old_hook = sys.excepthook
     sys.excepthook = catch_exceptions
 
