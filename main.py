@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+import menu
 import password
 import sys
-import menu
 
 
 class MainWindow(QMainWindow):

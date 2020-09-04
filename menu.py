@@ -31,14 +31,14 @@ class ProgramWidget(QWidget):
 
         self.table = DBTable()
 
-        self.dbLayout = QVBoxLayout()
-        self.dbLayout.addLayout(self.websiteLayout)
-        self.dbLayout.addLayout(self.loginLayout)
-        self.dbLayout.addLayout(self.passwordLayout)
-        self.dbLayout.addWidget(self.addButton, alignment=Qt.AlignCenter)
-        self.dbLayout.addWidget(self.table, alignment=Qt.AlignBaseline)
+        self.mainLayout = QVBoxLayout()
+        self.mainLayout.addLayout(self.websiteLayout)
+        self.mainLayout.addLayout(self.loginLayout)
+        self.mainLayout.addLayout(self.passwordLayout)
+        self.mainLayout.addWidget(self.addButton, alignment=Qt.AlignCenter)
+        self.mainLayout.addWidget(self.table, alignment=Qt.AlignBaseline)
 
-        self.setLayout(self.dbLayout)
+        self.setLayout(self.mainLayout)
 
     def add_info(self):
         if len(self.websiteText.text()) == 0:
