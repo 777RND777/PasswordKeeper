@@ -11,12 +11,15 @@ class DBTable(QTableWidget):
         self.get_saved_info()
 
     def get_saved_info(self):
-        with open("db", "r") as f:
-            data = f.readlines()
-        for line in data:
-            line = line.split("|")
-            if len(line) == 3:
-                self.add_row(line[0], line[1], line[2][:-1])
+        try:
+            with open("db", "r") as f:
+                data = f.readlines()
+            for line in data:
+                line = line.split("|")
+                if len(line) == 3:
+                    self.add_row(line[0], line[1], line[2][:-1])
+        except FileNotFoundError:
+            pass
 
     def add_row(self, website, login, password):
         row_position = self.rowCount()
@@ -28,4 +31,5 @@ class DBTable(QTableWidget):
     def save_info(self):
         with open("db", "w") as f:
             for i in range(self.rowCount()):
-                f.write(self.item(i, 0).text() + "|" + self.item(i, 1).text() + "|" + self.item(i, 2).text() + "\n")
+                encoded_row = self.item(i, 0).text() + "|" + self.item(i, 1).text() + "|" + self.item(i, 2).text()
+                f.write(encoded_row + "\n")
