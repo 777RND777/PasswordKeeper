@@ -14,10 +14,14 @@ class MainWindow(QMainWindow):
         self.passwordWidget = password.PasswordWidget()
         self.passwordWidget.switch_window.connect(self.pass_check)
         self.setCentralWidget(self.passwordWidget)
-        self.pass_check()
+
+        self.programWidget = menu.ProgramWidget()
 
     def pass_check(self):
-        self.setCentralWidget(menu.ProgramWidget())
+        self.setCentralWidget(self.programWidget)
+
+    def closeEvent(self, event):
+        self.programWidget.table.save_info()
 
 
 def catch_exceptions(t, val, tb):
