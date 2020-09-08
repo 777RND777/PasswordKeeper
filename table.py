@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem
+import base64
 
 
 class DBTable(QTableWidget):
@@ -15,9 +16,10 @@ class DBTable(QTableWidget):
             with open("db", "r") as f:
                 data = f.readlines()
             for line in data:
+                line = base64.b64decode(line[2:-2].encode()).decode()
                 line = line.split("|")
                 if len(line) == 3:
-                    self.add_row(line[0], line[1], line[2][:-1])
+                    self.add_row(line[0], line[1], line[2].replace("\n", ""))
         except FileNotFoundError:
             pass
 
@@ -31,5 +33,5 @@ class DBTable(QTableWidget):
     def save_info(self):
         with open("db", "w") as f:
             for i in range(self.rowCount()):
-                encoded_row = self.item(i, 0).text() + "|" + self.item(i, 1).text() + "|" + self.item(i, 2).text()
-                f.write(encoded_row + "\n")
+                row = self.item(i, 0).text() + "|" + self.item(i, 1).text() + "|" + self.item(i, 2).text()
+                f.write(str(base64.b64encode(row.encode())) + "\n")
